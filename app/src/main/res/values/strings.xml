@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RecordManager</string>
+    <string name="all_records">All Records</string>
+    <string name="new_record">New Record</string>
+</resources>
