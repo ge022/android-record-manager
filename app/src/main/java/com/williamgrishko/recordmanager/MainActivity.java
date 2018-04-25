@@ -20,7 +20,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
 
     ListView listViewRecords;
-    LiveData<List<String>> items;
+    LiveData<List<Record>> items;
     ArrayAdapter adapter;
 
     @Override
@@ -30,11 +30,11 @@ public class MainActivity extends BaseActivity {
 
         listViewRecords = findViewById(R.id.listViewRecords);
 
-        items = recordDatabase.recordDao().getNames();
-        items.observe(this, new Observer<List<String>>() {
+        items = recordDatabase.recordDao().getAll();
+        items.observe(this, new Observer<List<Record>>() {
             @Override
-            public void onChanged(@Nullable List<String> records) {
-                adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.activity_listview, records);
+            public void onChanged(@Nullable List<Record> records) {
+                adapter = new ArrayAdapter<Record>(getApplicationContext(), R.layout.activity_listview, records);
                 listViewRecords.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 listViewRecords.invalidateViews();
@@ -45,8 +45,8 @@ public class MainActivity extends BaseActivity {
         listViewRecords.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), EditActivity.class);
-                intent.putExtra("POSITION", position + 1);
+                Intent intent = new Intent(getApplicationContext(), ShowActivity.class);
+                intent.putExtra("RECORD", (int) items.getValue().get(position).getRecordID());
                 startActivity(intent);
             }
         });

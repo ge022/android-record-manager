@@ -86,4 +86,10 @@ public class Record {
         this.dateModified = dateModified;
     }
 
+    @Override
+    public String toString() {
+
+        return getName() + " - " + getDescription();
+    }
+
 }

@@ -15,13 +15,13 @@ import java.util.Date;
 
 public class EditActivity extends BaseActivity {
 
-    int position;
+    int recordID;
     LiveData<Record> record;
     EditText edtName;
     EditText edtDescription;
     EditText edtPrice;
     RatingBar rtbRating;
-
+    Observer<Record> recordObserver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +35,9 @@ public class EditActivity extends BaseActivity {
 
         // Get intent data
         Intent intent = getIntent();
-        position = intent.getIntExtra("POSITION", 0);
+        recordID = intent.getIntExtra("RECORD", 0);
 
-        record = recordDatabase.recordDao().getRecord(position);
-        record.observe(this, new Observer<Record>() {
+        recordObserver = new Observer<Record>() {
             @Override
             public void onChanged(@Nullable Record record) {
                 if (record == null) {
@@ -51,12 +50,18 @@ public class EditActivity extends BaseActivity {
                 rtbRating.setRating(record.getRating());
 
             }
-        });
+        };
+
+        record = recordDatabase.recordDao().getRecord(recordID);
+        record.observe(this, recordObserver);
 
 
     }
 
     public void saveRecordOnClick(View view) {
+
+        record.removeObserver(recordObserver);
+
         final String name = edtName.getText().toString();
 
         if( name.trim().equals("")) {
@@ -85,6 +90,7 @@ public class EditActivity extends BaseActivity {
 
                 recordDatabase.recordDao().updateRecord(record.getValue());
                 Intent intent = new Intent(getApplicationContext(), ShowActivity.class);
+                intent.putExtra("RECORD", recordID);
                 startActivity(intent);
             }
         }).start();

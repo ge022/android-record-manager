@@ -12,8 +12,8 @@ import java.util.List;
 @Dao
 public interface RecordDao {
 
-    @Query("SELECT name FROM records")
-    LiveData<List<String>> getNames();
+    @Query("SELECT * FROM records ORDER BY name")
+    LiveData<List<Record>> getAll();
 
     @Query("SELECT * FROM RECORDS WHERE recordID LIKE :recordID")
     LiveData<Record> getRecord(int recordID);
