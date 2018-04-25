@@ -5,6 +5,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.Nullable;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -14,13 +15,12 @@ public class Record {
     @PrimaryKey(autoGenerate = true)
     private long recordID;
 
-    // TODO: not null
     private String name;
 
     private String description;
 
     @TypeConverters(Converters.class)
-    private long price;
+    private BigDecimal price;
 
     private int rating;
 
@@ -54,11 +54,11 @@ public class Record {
         this.description = description;
     }
 
-    public long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

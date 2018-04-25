@@ -7,15 +7,20 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
     ListView listViewRecords;
-    LiveData<List<Record>> items;
+    LiveData<List<String>> items;
     ArrayAdapter adapter;
 
     @Override
@@ -25,15 +30,24 @@ public class MainActivity extends BaseActivity {
 
         listViewRecords = findViewById(R.id.listViewRecords);
 
-        items = recordDatabase.recordDao().getAll();
-        items.observe(this, new Observer<List<Record>>() {
+        items = recordDatabase.recordDao().getNames();
+        items.observe(this, new Observer<List<String>>() {
             @Override
-            public void onChanged(@Nullable List<Record> records) {
-                adapter = new ArrayAdapter<Record>(getApplicationContext(), R.layout.activity_listview, records);
+            public void onChanged(@Nullable List<String> records) {
+                adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.activity_listview, records);
                 listViewRecords.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 listViewRecords.invalidateViews();
                 listViewRecords.refreshDrawableState();
+            }
+        });
+
+        listViewRecords.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), EditActivity.class);
+                intent.putExtra("POSITION", position + 1);
+                startActivity(intent);
             }
         });
     }

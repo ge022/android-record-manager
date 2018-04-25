@@ -12,8 +12,11 @@ import java.util.List;
 @Dao
 public interface RecordDao {
 
-    @Query("SELECT * from records")
-    LiveData<List<Record>> getAll();
+    @Query("SELECT name FROM records")
+    LiveData<List<String>> getNames();
+
+    @Query("SELECT * FROM RECORDS WHERE recordID LIKE :recordID")
+    LiveData<Record> getRecord(int recordID);
 
     @Insert
     void addRecord(Record record);

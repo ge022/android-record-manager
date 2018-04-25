@@ -8,5 +8,5 @@
     <item
         android:id="@+id/menuAddRecord"
         android:layout_height="wrap_content"
-        android:title="Add Record" />
+        android:title="New Record" />
 </menu>
