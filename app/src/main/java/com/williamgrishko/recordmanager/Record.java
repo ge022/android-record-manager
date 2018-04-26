@@ -89,7 +89,7 @@ public class Record {
     @Override
     public String toString() {
 
-        return getName() + " - " + getDescription();
+        return getName() + " - " + getDescription().substring(0, Math.min(getDescription().length(), 25));
     }
 
 }

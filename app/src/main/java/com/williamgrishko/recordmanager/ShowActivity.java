@@ -13,6 +13,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+
 public class ShowActivity extends BaseActivity {
 
     int recordID;
@@ -21,6 +23,8 @@ public class ShowActivity extends BaseActivity {
     TextView txtDescription;
     TextView txtPrice;
     RatingBar rtbRating;
+    TextView txtDateModified;
+    TextView txtDateCreated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class ShowActivity extends BaseActivity {
         txtDescription = findViewById(R.id.txtDescription);
         txtPrice = findViewById(R.id.txtPrice);
         rtbRating = findViewById(R.id.rtbRating);
+        txtDateModified = findViewById(R.id.txtDateModified);
+        txtDateCreated = findViewById(R.id.txtDateCreated);
 
         // Get intent data
         Intent intent = getIntent();
@@ -49,6 +55,10 @@ public class ShowActivity extends BaseActivity {
                 txtPrice.setText(record.getPrice().toString());
                 rtbRating.setRating(record.getRating());
 
+                SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy h:mm a", getResources().getConfiguration().locale);
+                txtDateModified.setText(DATE_FORMAT.format(record.getDateModified()));
+                txtDateCreated.setText(DATE_FORMAT.format(record.getDateCreated()));
+
             }
         });
 
@@ -57,9 +67,9 @@ public class ShowActivity extends BaseActivity {
     public void btnDeleteOnClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setMessage("Are you sure you want to delete this record?")
+        builder.setMessage(R.string.delete_record)
                 .setCancelable(true)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Delete record
@@ -73,7 +83,7 @@ public class ShowActivity extends BaseActivity {
                         }).start();
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();

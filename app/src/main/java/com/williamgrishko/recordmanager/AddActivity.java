@@ -32,7 +32,7 @@ public class AddActivity extends BaseActivity {
         final String name = edtName.getText().toString();
 
         if( name.trim().equals("")) {
-            edtName.setError("Name is required.");
+            edtName.setError(getString(R.string.name_required));
             return;
         }
 

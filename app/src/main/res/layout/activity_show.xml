@@ -12,7 +12,7 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_marginTop="38dp"
-            android:text="Show Record"
+            android:text="@string/show_record"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:paddingEnd="24dp"
             android:paddingStart="0dp"
-            android:text="Name"
+            android:text="@string/name"
             android:textAlignment="textEnd"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:paddingEnd="16dp"
             android:paddingStart="10dp"
-            android:text="Description"
+            android:text="@string/description"
             android:textAlignment="textEnd"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -81,7 +81,7 @@
             android:layout_weight="1"
             android:paddingEnd="16dp"
             android:paddingStart="0dp"
-            android:text="Price"
+            android:text="@string/price"
             android:textAlignment="textEnd"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -92,6 +92,56 @@
             android:layout_weight="1.5"
             android:textSize="18sp"
             tools:text="price" />
+    </TableRow>
+
+    <TableRow
+        android:layout_marginBottom="8dp"
+
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingEnd="16dp"
+            android:paddingStart="0dp"
+            android:text="@string/date_modified"
+            android:textAlignment="textEnd"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDateModified"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:textSize="18sp"
+            tools:text="date modified" />
+    </TableRow>
+
+    <TableRow
+        android:layout_marginBottom="8dp"
+
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingEnd="16dp"
+            android:paddingStart="0dp"
+            android:text="@string/date_created"
+            android:textAlignment="textEnd"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDateCreated"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:textSize="18sp"
+            tools:text="date created" />
     </TableRow>
 
     <TableRow
@@ -120,7 +170,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginEnd="24dp"
-            android:text="Delete"
+            android:text="@string/delete"
             android:onClick="btnDeleteOnClick"
             />
 
@@ -128,7 +178,7 @@
             android:id="@+id/btnEdit"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:text="Edit"
+            android:text="@string/edit"
             android:onClick="btnEditOnClick"/>
 
     </TableRow>

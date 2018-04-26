@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecordManager</string>
+    <string name="all_records">Archivo de Registros</string>
+    <string name="records">Archivo</string>
+    <string name="new_record">Nuevo Registro</string>
+    <string name="add_record">Agregar Registro</string>
+    <string name="name">Nombre</string>
+    <string name="description">Descripción</string>
+    <string name="price">Precio</string>
+    <string name="edit_record">Editar Registro</string>
+    <string name="submit_changes">Aplicar Cambios</string>
+    <string name="delete">Borrar</string>
+    <string name="edit">Editar</string>
+    <string name="show_record">Mostrar Registro</string>
+    <string name="name_required">Se requiere el nombre.</string>
+    <string name="delete_record">¿Está seguro de que desea eliminar este registro?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="date_created">Creacion</string>
+    <string name="date_modified">Modificada</string>
+</resources>

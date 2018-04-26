@@ -4,9 +4,9 @@
 
     <item
         android:id="@+id/menuViewAll"
-        android:title="View All" />
+        android:title="@string/records" />
     <item
         android:id="@+id/menuAddRecord"
         android:layout_height="wrap_content"
-        android:title="New Record" />
+        android:title="@string/new_record" />
 </menu>
